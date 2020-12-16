@@ -1,0 +1,29 @@
+<h1>{{title}}</h1>
+<div style="display: none;">
+    <input id='_csrf' type="hidden" name="_csrf" value="{{csrfToken}}">
+</div>
+
+{{#if auth}}
+    <div style="text-align:center">
+        <a class="button" href="/logout">Logout</a>
+    </div>
+
+    {{#if users}}
+        <h1>List of all Members:</h1>
+        <ul>
+            {{#each users}}
+                <li id="{{this._id}}"><p>
+                    Name: {{this.name}}
+                    Email: {{this.email}}
+                    Role: {{this.role}} <a class="button" onclick="promoteToAdmin('{{this._id}}')">Promote ME</a>
+                                        <a class="button" onclick="demoteToUser('{{this._id}}')">Demote ME</a>
+                    <a class="button" onclick="deleteUser('{{this._id}}')">Delete ME</a>
+                </p></li>
+            {{/each}}
+        </ul>
+    {{/if}}
+{{else}}
+    <div style="text-align:center">
+        <a class="button" href="/">Go back</a>
+    </div>
+{{/if}}

@@ -1,0 +1,65 @@
+<h1>{{title}}</h1>
+<div id="info"></div>
+{{#if name}}
+    <h1 style="color: red">Hell's newest member {{name}}!</h1>
+{{/if}}
+
+{{#if user}}
+    <form>
+        <div class="form login-form">
+            <p>Logged in as <strong>{{user}}</strong></p>
+            {{#if time}}
+                <p>Days left in hell: {{time}}</p>
+            {{else}}
+                <p>Your Status has expired!</p>
+            {{/if}}
+            <div class="buttons">
+                <a class="button" href="/payment">Extend your Membership</a>
+            </div>
+            <div class="buttons">
+                <a class="button" href="/user">Modify your user data</a>
+            </div>
+            <div class="buttons">
+                <a class="button" href="/admin">Admin</a>
+            </div>
+            <div class="buttons">
+                <a class="button" href="/logout">Logout</a>
+            </div>
+        </div>
+        </div>
+    </form>
+{{else if login}}
+    <form action ="/login" method="post">
+        <div class="form login-form">
+            <input type="text" name="email" placeholder="email">
+            <input type="text" name="password" placeholder="password">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div class="buttons">
+                <input type="submit" value="Submit" class="button signup">
+                <a class="button" href="/register">Signup</a>
+            </div>
+        </div>
+    </form>
+{{else if register}}
+    <form action ="/users" method="post">
+        <div class="form signup-form">
+            <b>Name</b><input type="text" name="name" placeholder="name">
+            <b>Email</b><input type="text" name="email" placeholder="email">
+            <b>Password</b><input type="text" name="password" placeholder="password">
+            <b>Fake credit card number</b><input type="text" name="fakeCreditCard" placeholder="fake card number">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div class="buttons">
+                <a class="button" href="/login">Login</a>
+                <input type="submit" value="Submit" class="button">
+            </div>
+        </div>
+    </form>
+{{else }}
+    <div style="text-align:center">
+        <h3>You are NOT logged in!</h3>
+        <a class="button" href="/login">Login</a>
+        <a class="button" href="/register">Sign up</a>
+        <a class="button" onclick="loadIpsum()">Info</a>
+    </div>
+{{/if}}
+

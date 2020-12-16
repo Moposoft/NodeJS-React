@@ -1,0 +1,55 @@
+{{#if name}}
+    <div style="text-align:center">
+        <b>Hi {{name}}!</b>
+        <p></p>
+        <a class="button" href="/logout">Logout</a>
+    </div>
+    <form action ="/modify" method="post">
+        <div class="form signup-form">
+            <b>Change your Username</b><input type="text" name="name" placeholder={{name}}>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div class="buttons">
+                <input type="submit" value="Submit" class="button">
+            </div>
+        </div>
+    </form>
+    <form action ="/modify" method="post">
+        <div class="form signup-form">
+            <b>Change your Email</b><input type="text" name="email" placeholder={{email}}>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div class="buttons">
+                <input type="submit" value="Submit" class="button">
+            </div>
+        </div>
+    </form>
+    <form action ="/modify" method="post">
+        <div class="form signup-form">
+            <b>Change your fake credit card</b><input type="text" name="fakeCreditCard" placeholder={{fakeCreditCard}}>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div class="buttons">
+                <input type="submit" value="Submit" class="button">
+            </div>
+        </div>
+    </form>
+    <form action ="/modify" method="post">
+        <div class="form signup-form">
+            <b>Change your Password</b><input type="text" name="password" placeholder="Password">
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div class="buttons">
+                <input type="submit" value="Submit" class="button">
+            </div>
+        </div>
+        <div style="text-align:center">
+            <b>Leave this cursed place</b>
+            <p></p>
+            <a class="button" href="/unregister">Unregister</a>
+        </div>
+    </form>
+
+{{else }}
+    <div style="text-align:center">
+        <b>Not Logged in!</b>
+        <p></p>
+        <a class="button" href="/login">Login</a>
+    </div>
+{{/if}}
